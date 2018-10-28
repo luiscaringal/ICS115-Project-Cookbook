@@ -16,7 +16,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:background="@color/colorBackgroundInput"
+        android:background="@drawable/rounded_input"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -34,7 +34,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorButton"
+        android:background="@drawable/rounded_button"
         android:text="log in"
         android:textColor="@color/colorBackgroundInput"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <EditText
-        android:background="@color/colorBackgroundInput"
+        android:background="@drawable/rounded_input"
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorButton"
+        android:background="@drawable/rounded_button"
         android:text="sign up"
         android:textColor="@color/colorBackgroundInput"
         app:layout_constraintBottom_toBottomOf="parent"
