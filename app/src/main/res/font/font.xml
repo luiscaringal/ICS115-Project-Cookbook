@@ -3,9 +3,9 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/SFProTextRegular" />
+        android:font="@font/sfprotextregular" />
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/MontserratSemiBold" />
+        android:font="@font/montserratsemibold" />
 </font-family>
