@@ -1,13 +1,10 @@
 package com.ics115_project.cookbook;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
-import android.transition.TransitionManager;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                final Intent i = new Intent(MainActivity.this, login_activity.class);
+                final Intent i = new Intent(MainActivity.this, login_user_activity.class);
                 MainActivity.this.startActivity(i);
                 MainActivity.this.finish();
             }
-        }, 5000);
+        }, 2500);
 
     }
 }
