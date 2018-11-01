@@ -1,8 +1,7 @@
-package com.ics115_project.cookbook;
+package com.ics115_project.cookbook.functions;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.icu.util.Output;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -17,11 +16,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class register_function extends AsyncTask <String,Void,String> {
-
+public class login_function extends AsyncTask <String,Void,String> {
     AlertDialog dialog;
     Context context;
-    public register_function(Context context){
+    public login_function(Context context){
         this.context = context;
     }
 
@@ -36,18 +34,13 @@ public class register_function extends AsyncTask <String,Void,String> {
         dialog.setMessage(s);
         dialog.show();
     }
-
     @Override
     protected String doInBackground(String... voids) {
         String result = "";
         String username = voids[0];
-        String firstname = voids[1];
-        String lastname = voids[2];
-        String password = voids[3];
-        String phonenumber = voids[4];
-        String email = voids[5];
+        String password = voids[1];
 
-        String link = "http://192.168.43.33/phpAndroidDBConnect/register_user.php";
+        String link = "http://192.168.43.33/android_api/login_user.php";
 
         try {
             URL url = new URL(link);
@@ -59,11 +52,7 @@ public class register_function extends AsyncTask <String,Void,String> {
             OutputStream ops = http.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(ops, "UTF-8"));
             String data =   URLEncoder.encode("username","UTF-8") + "=" + URLEncoder.encode(username,"UTF-8") + "&&" +
-                            URLEncoder.encode("firstname","UTF-8") + "=" + URLEncoder.encode(firstname,"UTF-8") + "&&" +
-                            URLEncoder.encode("lastname","UTF-8") + "=" + URLEncoder.encode(lastname,"UTF-8") + "&&" +
-                            URLEncoder.encode("password","UTF-8") + "=" + URLEncoder.encode(password,"UTF-8") + "&&" +
-                            URLEncoder.encode("phonenumber","UTF-8") + "=" + URLEncoder.encode(phonenumber,"UTF-8") + "&&" +
-                            URLEncoder.encode("email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8");
+                            URLEncoder.encode("password","UTF-8") + "=" + URLEncoder.encode(password,"UTF-8");
 
             writer.write(data);
             writer.flush();
