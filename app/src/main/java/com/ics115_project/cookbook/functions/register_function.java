@@ -19,22 +19,9 @@ import java.net.URLEncoder;
 
 public class register_function extends AsyncTask <String,Void,String> {
 
-    AlertDialog dialog;
     Context context;
     public register_function(Context context){
         this.context = context;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Registration Status");
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        dialog.setMessage(s);
-        dialog.show();
     }
 
     @Override

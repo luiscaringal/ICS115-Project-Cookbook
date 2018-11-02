@@ -6,6 +6,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.ics115_project.cookbook.functions.register_function;
 
@@ -37,5 +38,6 @@ public class register_user_activity extends AppCompatActivity {
 
         register_function reg = new register_function(this);
         reg.execute(username, firstname,lastname,password,phonenumber,email);
+        Toast.makeText(this,"Registration Success",Toast.LENGTH_LONG).show();
     }
 }

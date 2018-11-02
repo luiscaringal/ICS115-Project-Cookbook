@@ -15,32 +15,23 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import org.json.*;
+
 
 public class login_function extends AsyncTask <String,Void,String> {
-    AlertDialog dialog;
+
     Context context;
     public login_function(Context context){
         this.context = context;
     }
 
     @Override
-    protected void onPreExecute() {
-        dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Login Status");
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        dialog.setMessage(s);
-        dialog.show();
-    }
-    @Override
     protected String doInBackground(String... voids) {
         String result = "";
         String username = voids[0];
         String password = voids[1];
 
-        String link = "http://192.168.43.33/android_api/login_user.php";
+        String link = "http://172.20.10.6/android_api/login_user.php";
 
         try {
             URL url = new URL(link);
@@ -63,7 +54,8 @@ public class login_function extends AsyncTask <String,Void,String> {
             BufferedReader reader = new BufferedReader(new InputStreamReader(ips,"ISO-8859-1"));
             String line = "";
             while((line = reader.readLine()) != null){
-                result += line;
+                JSONObject obj = new JSONObject(line);
+                result = obj.getString("success");
             };
 
             reader.close();
@@ -72,10 +64,11 @@ public class login_function extends AsyncTask <String,Void,String> {
             return result;
         } catch (MalformedURLException e) {
             result = e.getMessage();
-        }catch (IOException e) {
+        } catch (IOException e) {
             result = e.getMessage();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-
         return result;
     }
 }
