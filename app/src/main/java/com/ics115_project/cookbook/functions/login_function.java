@@ -31,7 +31,7 @@ public class login_function extends AsyncTask <String,Void,String> {
         String username = voids[0];
         String password = voids[1];
 
-        String link = "http://172.20.10.6/android_api/login_user.php";
+        String link = "http://192.168.1.4/android_api/login_user.php";
 
         try {
             URL url = new URL(link);
