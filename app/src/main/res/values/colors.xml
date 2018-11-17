@@ -6,4 +6,5 @@
     <color name="colorBackground">#f9e9eb</color>
     <color name="colorBackgroundInput">#ffffff</color>
     <color name="colorButton">#f2848d</color>
+    <color name="colorButtonOrder">#4f4f4f</color>
 </resources>
