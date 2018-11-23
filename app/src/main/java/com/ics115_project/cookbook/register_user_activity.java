@@ -1,5 +1,6 @@
 package com.ics115_project.cookbook;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -39,5 +40,7 @@ public class register_user_activity extends AppCompatActivity {
         register_function reg = new register_function(this);
         reg.execute(username, firstname,lastname,password,phonenumber,email);
         Toast.makeText(this,"Registration Success",Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this,login_user_activity.class);
+        startActivity(i);
     }
 }

@@ -243,7 +243,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserratsemibold"
-        android:onClick="login"
+        android:onClick="registerUser"
         android:text="Register"
         android:textColor="@color/colorBackgroundInput"
         android:textStyle="bold"

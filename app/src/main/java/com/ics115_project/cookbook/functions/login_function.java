@@ -3,6 +3,10 @@ package com.ics115_project.cookbook.functions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,6 +25,8 @@ import org.json.*;
 public class login_function extends AsyncTask <String,Void,String> {
 
     Context context;
+//    host_ip host;
+
     public login_function(Context context){
         this.context = context;
     }
@@ -31,7 +37,9 @@ public class login_function extends AsyncTask <String,Void,String> {
         String username = voids[0];
         String password = voids[1];
 
-        String link = "http://192.168.1.4/android_api/login_user.php";
+        host_ip host = new host_ip();
+
+        String link = "http://" + host.getHostIp() + "/android_api/login_user.php";
 
         try {
             URL url = new URL(link);

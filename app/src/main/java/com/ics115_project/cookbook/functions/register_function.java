@@ -34,7 +34,7 @@ public class register_function extends AsyncTask <String,Void,String> {
         String phonenumber = voids[4];
         String email = voids[5];
 
-        String link = "http://192.168.1.4/android_api/register_user.php";
+        String link = "http://10.1.182.42/android_api/register_user.php";
 
         try {
             URL url = new URL(link);
