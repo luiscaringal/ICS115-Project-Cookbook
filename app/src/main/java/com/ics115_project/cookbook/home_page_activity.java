@@ -1,5 +1,6 @@
 package com.ics115_project.cookbook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,5 +18,10 @@ public class home_page_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_layout);
+    }
+
+    public void profilePage(View v){
+        Intent i = new Intent(this, profile_activity.class);
+        startActivity(i);
     }
 }

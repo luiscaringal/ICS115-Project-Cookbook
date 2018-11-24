@@ -1,13 +1,7 @@
 package com.ics115_project.cookbook.functions;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,7 +19,6 @@ import org.json.*;
 public class login_function extends AsyncTask <String,Void,String> {
 
     Context context;
-//    host_ip host;
 
     public login_function(Context context){
         this.context = context;
