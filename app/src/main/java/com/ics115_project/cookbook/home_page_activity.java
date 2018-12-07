@@ -2,7 +2,9 @@ package com.ics115_project.cookbook;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,56 +15,41 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class home_page_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class home_page_activity extends AppCompatActivity{
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page_layout);
+        setContentView(R.layout.home_page);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this );
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch(menuItem.getItemId()){
-            case R.id.profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new profile_fragment()).commit();
-                break;
-            case R.id.my_cart:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new my_order_fragment()).commit();
-                break;
-            case R.id.discover :
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new discover_fragment()).commit();
-                break;
-        }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    Fragment selectedFragment = null;
 
-        drawer.closeDrawer(GravityCompat.START);
-
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-            super.onBackPressed();
-        }
-    }
+                    switch(menuItem.getItemId()){
+                        case R.id.home:
+                            selectedFragment = new Fragment();
+                            break;
+                        case R.id.profile:
+                            selectedFragment = new profile_fragment();
+                            break;
+                        case R.id.order:
+                            selectedFragment = new my_order_fragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+                    return true;
+                }
+            };
 }
