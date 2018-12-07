@@ -18,7 +18,7 @@ public class login_user_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         uname = findViewById(R.id.login_username);
         pass = findViewById(R.id.login_password);
     }
@@ -28,25 +28,8 @@ public class login_user_activity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void login(View v){
-        String username = uname.getText().toString();
-        String password = pass.getText().toString();
-        login_function login = new login_function(this);
-        try {
-            String result = login.execute(username,password).get();
-
-            if(result.equals("1")){
-                Toast.makeText(this,"Login Success", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(this, home_page_activity.class);
-                startActivity(i);
-            }
-            else{
-                Toast.makeText(this,"Login Unsuccessful", Toast.LENGTH_LONG).show();
-            }
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void login(View v) {
+        Intent i = new Intent(this, home_page_activity.class);
+        startActivity(i);
     }
 }

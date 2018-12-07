@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.load_page);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
             @Override

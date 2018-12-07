@@ -13,6 +13,6 @@ public class login_function {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
 
-    
+
 
 }

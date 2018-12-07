@@ -19,7 +19,7 @@ public class register_user_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_user_layout);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         r_uname = findViewById(R.id.reg_uname);
         r_fname = findViewById(R.id.reg_fname);
         r_lname = findViewById(R.id.reg_lname);
