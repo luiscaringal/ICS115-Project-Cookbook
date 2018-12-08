@@ -8,7 +8,7 @@
     android:background="@color/colorBackground">
 
     <EditText
-        android:id="@+id/login_username"
+        android:id="@+id/login_email"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:layout_marginBottom="12dp"
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/log_in"
+        android:id="@+id/button_login"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:layout_marginBottom="12dp"
@@ -37,11 +37,10 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserratsemibold"
-        android:onClick="login"
         android:text="log in"
         android:textColor="@color/colorBackgroundInput"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sign_up"
+        app:layout_constraintBottom_toTopOf="@+id/button_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -60,12 +59,12 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/log_in"
+        app:layout_constraintBottom_toTopOf="@+id/button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/sign_up"
+        android:id="@+id/button_signup"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:layout_marginBottom="56dp"
@@ -75,7 +74,6 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserratsemibold"
-        android:onClick="signUp"
         android:text="sign up"
         android:textColor="@color/colorBackgroundInput"
         android:textStyle="bold"
@@ -93,7 +91,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_username"
+        app:layout_constraintBottom_toTopOf="@+id/login_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
