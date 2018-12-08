@@ -39,7 +39,6 @@
         </activity>
         <activity
             android:name=".home_page_activity"
-            android:label="@string/home"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
