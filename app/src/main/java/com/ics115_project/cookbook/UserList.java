@@ -13,24 +13,31 @@ import java.util.List;
 
 public class UserList extends ArrayAdapter<User> {
     private Activity context;
-    private List<User> mUserList;
+    private List<User> userList;
 
     public UserList(Activity context, List<User> userList){
         super(context, R.layout.home_page, userList);
         this.context = context;
-        this.mUserList = userList;
+        this.userList = userList;
     }
 
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        LayoutInflater inflater = context.getLayoutInflater();
-//
-//        View listViewItem = inflater.inflate(R.layout.home_page,null,true);
-//
-//        TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
-//        TextView textViewSpecialty = (TextView) listViewItem.findViewById(R.id.textViewSpecialty);
-//
-//        home_page_activity home = UserList.get();
-//    }
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        LayoutInflater inflater = context.getLayoutInflater();
+
+        View listViewItem = inflater.inflate(R.layout.user_list_layout,null,true);
+
+        TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
+        TextView textViewUserName = (TextView) listViewItem.findViewById(R.id.textViewUserName);
+        TextView textViewPhoneNumber = (TextView) listViewItem.findViewById(R.id.textViewPhoneNumber);
+
+        User user = userList.get(position);
+
+        textViewName.setText(user.getName());
+        textViewUserName.setText(user.getUserName());
+        textViewPhoneNumber.setText(user.getPhoneNumber());
+
+        return listViewItem;
+    }
 }

@@ -33,7 +33,7 @@ public class login_user_activity extends AppCompatActivity implements View.OnCli
         firebaseAuth = FirebaseAuth.getInstance();
 
         if (firebaseAuth.getCurrentUser() != null) {
-            startActivity(new Intent(this, home_page_activity.class));
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
 
@@ -62,7 +62,7 @@ public class login_user_activity extends AppCompatActivity implements View.OnCli
                             progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Toast.makeText(login_user_activity.this, "Login Success", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(login_user_activity.this, home_page_activity.class));
+                                startActivity(new Intent(login_user_activity.this, HomeActivity.class));
                                 finish();
                             } else {
                                 Toast.makeText(login_user_activity.this, "Login Failed", Toast.LENGTH_LONG).show();
@@ -79,7 +79,6 @@ public class login_user_activity extends AppCompatActivity implements View.OnCli
         }
         if (v == signup) {
             startActivity(new Intent(this, RegisterUserActivity.class));
-            finish();
         }
     }
 }

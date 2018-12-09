@@ -3,6 +3,7 @@ package com.ics115_project.cookbook;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterUserActivity extends AppCompatActivity implements View.OnClickListener {
     EditText r_uname, r_fname, r_lname, r_password, r_phone_number, r_email;
     RadioGroup radioButtonChooser;
+    RadioButton radioButton;
     Button registerUser;
 
     DatabaseReference databaseUser;
@@ -63,7 +65,10 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String password = r_password.getText().toString().trim();
         String phone_number = r_phone_number.getText().toString().trim();
         String email = r_email.getText().toString().trim();
-        int account_type = radioButtonChooser.getCheckedRadioButtonId();
+
+        int account_type_id = radioButtonChooser.getCheckedRadioButtonId();
+        radioButton = (RadioButton) findViewById(account_type_id);
+        String account_type = radioButton.getText().toString();
 
         progressDialog.setMessage("Registering Account");
         progressDialog.show();
@@ -83,7 +88,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
-        User user = new User(email, fname + lname, account_type);
+        User user = new User(uname, email, fname + " " + lname, account_type, phone_number);
 
         databaseUser.child(uname).setValue(user);
     }
