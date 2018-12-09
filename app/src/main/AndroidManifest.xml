@@ -46,8 +46,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".MenuActivity"></activity>
-        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".MenuActivity"/>
+        <activity android:name=".OrderActivity"/>
+        <activity android:name=".OrderFormActivity"/>
+        <activity android:name=".OrderSuccessActivity"/>
     </application>
 
 </manifest>
