@@ -29,7 +29,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".register_user_activity"
+            android:name=".RegisterUserActivity"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -46,6 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".menu_activity"></activity>
     </application>
 
 </manifest>

@@ -78,7 +78,7 @@ public class login_user_activity extends AppCompatActivity implements View.OnCli
             userLogin();
         }
         if (v == signup) {
-            startActivity(new Intent(this, register_user_activity.class));
+            startActivity(new Intent(this, RegisterUserActivity.class));
             finish();
         }
     }
