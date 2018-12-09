@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class order_fragment extends Fragment {
+public class OrderFragment extends Fragment {
 
     @Nullable
     @Override

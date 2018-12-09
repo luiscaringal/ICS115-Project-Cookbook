@@ -11,12 +11,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class home_page_activity extends AppCompatActivity {
-    private DrawerLayout drawer;
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeActivity extends AppCompatActivity{
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseUser;
+
+    ListView listViewUser;
+    List<User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +43,54 @@ public class home_page_activity extends AppCompatActivity {
         setContentView(R.layout.home_page);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        databaseUser = FirebaseDatabase.getInstance().getReference("users");
 
         if (firebaseAuth.getCurrentUser() == null) {
             startActivity(new Intent(this, login_user_activity.class));
         }
 
+        listViewUser = (ListView) findViewById(R.id.listViewUser);
+        userList = new ArrayList<>();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        listViewUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textview = (TextView) view.findViewById(R.id.textViewName);
+                String text = textview.getText().toString();
+                Toast.makeText(HomeActivity.this,text,Toast.LENGTH_LONG).show();
+            }
+        });
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                userList.clear();
+
+                for(DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                    User user = userSnapshot.getValue(User.class);
+                    userList.add(user);
+                }
+
+                ArrayAdapter adapter = new UserList(HomeActivity.this, userList);
+                listViewUser.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -44,13 +101,13 @@ public class home_page_activity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()) {
                         case R.id.home:
-                            selectedFragment = new Fragment();
+                            selectedFragment = new HomeFragment();
                             break;
                         case R.id.profile:
-                            selectedFragment = new profile_fragment();
+                            selectedFragment = new ProfileFragment();
                             break;
                         case R.id.order:
-                            selectedFragment = new order_fragment();
+                            selectedFragment = new OrderFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
