@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_below="@id/toolbar">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -43,8 +45,8 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/montserratsemibold"
-                android:textColor="@color/colorBackgroundInput"
                 android:text="TOM YUN GOONG"
+                android:textColor="@color/colorBackgroundInput"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/imageView8"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -78,8 +80,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:text="DETAILS"
                 android:fontFamily="@font/sfprotextregular"
+                android:text="DETAILS"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView11"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
@@ -97,8 +99,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/sfprotextregular"
-                android:textColor="@color/colorButton"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt eros eu dolor vestibulum, vitae porttitor leo consectetur. "
+                android:textColor="@color/colorButton"
                 app:layout_constraintBottom_toTopOf="@+id/textView14"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -114,9 +116,9 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/sfprotextregular"
                 android:text="INGREDIENTS"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfprotextregular"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
@@ -130,9 +132,9 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/colorButton"
                 android:fontFamily="@font/sfprotextregular"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt eros eu dolor vestibulum, vitae porttitor leo consectetur. Suspendisse tincidunt mauris quis fringilla dictum. Phasellus ac odio libero. Sed quis purus finibus, vehicula enim ut, iaculis mi. Praesent aliquet, sapien ut facilisis ullamcorper, est turpis pellentesque diam, vel commodo augue erat a nisl. Vestibulum consectetur iaculis euismod. Curabitur mattis diam orci, eu suscipit neque sodales nec."
+                android:textColor="@color/colorButton"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
@@ -160,4 +162,4 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

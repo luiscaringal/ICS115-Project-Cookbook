@@ -47,6 +47,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".OrderActivity"></activity>
     </application>
 
 </manifest>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +53,12 @@ public class HomeActivity extends AppCompatActivity{
 
         listViewUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView textview = (TextView) view.findViewById(R.id.textViewName);
+                TextView textview = (TextView) view.findViewById(R.id.textViewUserName);
                 String text = textview.getText().toString();
-                Toast.makeText(HomeActivity.this,text,Toast.LENGTH_LONG).show();
+
+                Intent i = new Intent(HomeActivity.this,MenuActivity.class);
+                i.putExtra("userName",text);
+                startActivity(i);
             }
         });
 
@@ -79,7 +78,9 @@ public class HomeActivity extends AppCompatActivity{
 
                 for(DataSnapshot userSnapshot: dataSnapshot.getChildren()){
                     User user = userSnapshot.getValue(User.class);
-                    userList.add(user);
+                    if(user.getAccountType().equals("Chef")) {
+                        userList.add(user);
+                    }
                 }
 
                 ArrayAdapter adapter = new UserList(HomeActivity.this, userList);
