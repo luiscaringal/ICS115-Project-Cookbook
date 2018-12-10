@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,17 +23,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseUser;
+    private DatabaseReference databaseOrderList;
 
     ListView listViewUser;
+//    ListView listViewUserOrder;
     List<User> userList;
+//    List<UserOrder> userOrderList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +43,28 @@ public class HomeActivity extends AppCompatActivity{
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseUser = FirebaseDatabase.getInstance().getReference("users");
+        databaseOrderList = FirebaseDatabase.getInstance().getReference("orders");
 
         if (firebaseAuth.getCurrentUser() == null) {
             startActivity(new Intent(this, login_user_activity.class));
         }
 
         listViewUser = (ListView) findViewById(R.id.listViewUser);
+//        listViewUserOrder = (ListView) findViewById(R.id.listViewUserOrder);
         userList = new ArrayList<>();
+//        userOrderList = new ArrayList<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         listViewUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView textview = (TextView) view.findViewById(R.id.textViewName);
+                TextView textview = (TextView) view.findViewById(R.id.textViewUserName);
                 String text = textview.getText().toString();
-                Toast.makeText(HomeActivity.this,text,Toast.LENGTH_LONG).show();
+
+                Intent i = new Intent(HomeActivity.this,MenuActivity.class);
+                i.putExtra("userName",text);
+                startActivity(i);
             }
         });
 
@@ -79,7 +84,9 @@ public class HomeActivity extends AppCompatActivity{
 
                 for(DataSnapshot userSnapshot: dataSnapshot.getChildren()){
                     User user = userSnapshot.getValue(User.class);
-                    userList.add(user);
+                    if(user.getAccountType().equals("Chef")) {
+                        userList.add(user);
+                    }
                 }
 
                 ArrayAdapter adapter = new UserList(HomeActivity.this, userList);
@@ -91,6 +98,26 @@ public class HomeActivity extends AppCompatActivity{
 
             }
         });
+
+//        databaseOrderList.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                userOrderList.clear();
+//
+//                for(DataSnapshot userOrderSnapshot: dataSnapshot.getChildren()){
+//                    UserOrder userOrder = userOrderSnapshot.getValue(UserOrder.class);
+//                    userOrderList.add(userOrder);
+//                }
+//
+//                ArrayAdapter adapter = new UserOrderList(HomeActivity.this, userOrderList);
+//                listViewUserOrder.setAdapter(adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

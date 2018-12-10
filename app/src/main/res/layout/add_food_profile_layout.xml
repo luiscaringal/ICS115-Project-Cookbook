@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,7 +33,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/tom" />
+                app:srcCompat="@drawable/rounded_input" />
 
             <Button
                 android:id="@+id/food_title"
@@ -44,8 +46,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_button"
-                android:fontFamily="@font/montserratsemibold"
-                android:text="TOM YUN GOONG"
+                android:fontFamily="@font/sfprotextregular"
+                android:text="TITLE HERE"
                 android:textColor="@color/colorBackgroundInput"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/imageView8"
@@ -56,7 +58,7 @@
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="301dp"
-                android:layout_height="450dp"
+                android:layout_height="258dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
@@ -65,7 +67,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintHorizontal_bias="0.507"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/food_title"
                 app:layout_constraintVertical_bias="1.0"
@@ -80,7 +82,6 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/sfprotextregular"
                 android:text="DETAILS"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView11"
@@ -89,7 +90,7 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
                 app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textView11"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -98,9 +99,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:fontFamily="@font/sfprotextregular"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt eros eu dolor vestibulum, vitae porttitor leo consectetur. "
-                android:textColor="@color/colorButton"
+                android:hint="Details Here "
                 app:layout_constraintBottom_toTopOf="@+id/textView14"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -116,7 +115,6 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/sfprotextregular"
                 android:text="INGREDIENTS"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
@@ -124,7 +122,7 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textView15"
                 android:layout_width="253dp"
                 android:layout_height="wrap_content"
@@ -132,16 +130,14 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:fontFamily="@font/sfprotextregular"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt eros eu dolor vestibulum, vitae porttitor leo consectetur. Suspendisse tincidunt mauris quis fringilla dictum. Phasellus ac odio libero. Sed quis purus finibus, vehicula enim ut, iaculis mi. Praesent aliquet, sapien ut facilisis ullamcorper, est turpis pellentesque diam, vel commodo augue erat a nisl. Vestibulum consectetur iaculis euismod. Curabitur mattis diam orci, eu suscipit neque sodales nec."
-                android:textColor="@color/colorButton"
+                android:hint="Ingredients Here"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
             <Button
-                android:id="@+id/button_order_food"
+                android:id="@+id/saveFood"
                 android:layout_width="148dp"
                 android:layout_height="35dp"
                 android:layout_marginBottom="8dp"
@@ -152,14 +148,29 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/montserratsemibold"
-                android:text="ORDER"
+                android:text="SAVE"
                 android:textColor="@color/colorBackgroundInput"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView8"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="157dp"
+                android:layout_height="157dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/food_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/plus" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

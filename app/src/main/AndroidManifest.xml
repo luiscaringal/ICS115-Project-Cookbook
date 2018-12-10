@@ -46,7 +46,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".OrderFormActivity" />
+        <activity android:name=".OrderSuccessActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".AddFoodActivity" />
+        <activity
+            android:name=".AddFoodProfile"
+            android:label="@string/title_activity_add_food_profile"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
