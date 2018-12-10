@@ -7,4 +7,5 @@
     <color name="colorBackgroundInput">#ffffff</color>
     <color name="colorButton">#f2848d</color>
     <color name="colorButtonOrder">#4f4f4f</color>
+    <color name="colorBackgroundInputGray">#eeeeee</color>
 </resources>

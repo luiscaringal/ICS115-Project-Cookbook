@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,12 +33,16 @@ public class UserList extends ArrayAdapter<User> {
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
         TextView textViewUserName = (TextView) listViewItem.findViewById(R.id.textViewUserName);
         TextView textViewPhoneNumber = (TextView) listViewItem.findViewById(R.id.textViewPhoneNumber);
+        ImageView doggieImage = (ImageView) listViewItem.findViewById(R.id.avatar);
+        Button orderButton = (Button) listViewItem.findViewById(R.id.order_button_main);
 
         User user = userList.get(position);
 
         textViewName.setText(user.getName());
         textViewUserName.setText(user.getUserName());
         textViewPhoneNumber.setText(user.getPhoneNumber());
+        doggieImage.setImageResource(R.drawable.doggie);
+        orderButton.setText("ORDER");
 
         return listViewItem;
     }

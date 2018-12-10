@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBackground">
 
 
     <ScrollView
@@ -58,7 +59,7 @@
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="301dp"
-                android:layout_height="258dp"
+                android:layout_height="195dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
@@ -99,7 +100,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:hint="Details Here "
+                android:hint="DETAILS HERE"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView14"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -130,7 +132,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:hint="Ingredients Here"
+                android:hint="INGREDIENTS HERE"
+                android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView8"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
