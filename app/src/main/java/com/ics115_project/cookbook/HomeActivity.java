@@ -29,9 +29,12 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseUser;
+    private DatabaseReference databaseOrderList;
 
     ListView listViewUser;
+//    ListView listViewUserOrder;
     List<User> userList;
+//    List<UserOrder> userOrderList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,16 @@ public class HomeActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseUser = FirebaseDatabase.getInstance().getReference("users");
+        databaseOrderList = FirebaseDatabase.getInstance().getReference("orders");
 
         if (firebaseAuth.getCurrentUser() == null) {
             startActivity(new Intent(this, login_user_activity.class));
         }
 
         listViewUser = (ListView) findViewById(R.id.listViewUser);
+//        listViewUserOrder = (ListView) findViewById(R.id.listViewUserOrder);
         userList = new ArrayList<>();
+//        userOrderList = new ArrayList<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,6 +98,26 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+//        databaseOrderList.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                userOrderList.clear();
+//
+//                for(DataSnapshot userOrderSnapshot: dataSnapshot.getChildren()){
+//                    UserOrder userOrder = userOrderSnapshot.getValue(UserOrder.class);
+//                    userOrderList.add(userOrder);
+//                }
+//
+//                ArrayAdapter adapter = new UserOrderList(HomeActivity.this, userOrderList);
+//                listViewUserOrder.setAdapter(adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

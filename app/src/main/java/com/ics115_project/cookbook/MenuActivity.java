@@ -41,19 +41,20 @@ public class MenuActivity extends AppCompatActivity {
         listViewFood = (ListView) findViewById(R.id.listViewFood);
         foodList = new ArrayList<>();
 
+        Bundle bundle = getIntent().getExtras();
+        username = bundle.getString("userName");
+
         listViewFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textview = (TextView) view.findViewById(R.id.foodName);
                 String text = textview.getText().toString();
 
-                Intent i = new Intent(MenuActivity.this,OrderActivity.class);
-                i.putExtra("foodName",text);
+                Intent i = new Intent(MenuActivity.this, OrderActivity.class);
+                i.putExtra("foodName", text);
+                i.putExtra("chefUserName", username);
                 startActivity(i);
             }
         });
-
-        Bundle bundle = getIntent().getExtras();
-        username = bundle.getString("userName");
 
         TextView user = (TextView) findViewById(R.id.ChefName);
         user.setText(username);
@@ -69,9 +70,9 @@ public class MenuActivity extends AppCompatActivity {
 
                 foodList.clear();
 
-                for(DataSnapshot foodSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot foodSnapshot : dataSnapshot.getChildren()) {
                     Food food = foodSnapshot.getValue(Food.class);
-                    if(food.getChefUserName().equals(username)) {
+                    if (food.getChefUserName().equals(username)) {
                         foodList.add(food);
                     }
                 }

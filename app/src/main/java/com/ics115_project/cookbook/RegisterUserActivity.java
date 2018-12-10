@@ -3,7 +3,6 @@ package com.ics115_project.cookbook;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -46,7 +45,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         r_fname = findViewById(R.id.reg_fname);
         r_lname = findViewById(R.id.reg_lname);
         r_password = findViewById(R.id.reg_password);
-        r_phone_number = findViewById(R.id.reg_name);
+        r_phone_number = findViewById(R.id.orderName);
         r_email = findViewById(R.id.reg_email);
         radioButtonChooser = findViewById(R.id.radioButtonChooser);
         registerUser = findViewById(R.id.button3);
