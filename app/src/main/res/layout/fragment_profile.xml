@@ -156,7 +156,7 @@
                 android:inputType="text"
                 android:text="Santa Rosa City, Laguna"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@+id/button_edit_profile"
+                app:layout_constraintBottom_toTopOf="@+id/saveProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -204,12 +204,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <Button
-                android:id="@+id/button_edit_profile"
-                android:layout_width="160dp"
+                android:id="@+id/saveProfile"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="24dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/montserratsemibold"
@@ -224,11 +226,13 @@
 
             <Button
                 android:id="@+id/button_add_food"
-                android:layout_width="160dp"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/montserratsemibold"
                 android:text="add food"
@@ -236,7 +240,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button_edit_profile" />
+                app:layout_constraintStart_toEndOf="@+id/saveProfile" />
 
             <ImageView
                 android:id="@+id/imageView7"

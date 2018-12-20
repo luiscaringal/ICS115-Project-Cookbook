@@ -1,7 +1,7 @@
 package com.ics115_project.cookbook;
 
 public class UserOrder {
-    private String customerUserName;
+    private String customerEmail;
     private String customerName;
     private String orderFood;
     private String orderQuantity;
@@ -14,8 +14,8 @@ public class UserOrder {
 
     }
 
-    public UserOrder(String customerUserName, String customerName, String orderFood, String orderQuantity, String pickUpDate, String modeOfPayment, String extraComment, String chefUserName) {
-        this.customerUserName = customerUserName;
+    public UserOrder(String customerEmail, String customerName, String orderFood, String orderQuantity, String pickUpDate, String modeOfPayment, String extraComment, String chefUserName) {
+        this.customerEmail = customerEmail;
         this.customerName = customerName;
         this.orderFood = orderFood;
         this.orderQuantity = orderQuantity;
@@ -49,8 +49,8 @@ public class UserOrder {
         return extraComment;
     }
 
-    public String getCustomerUserName() {
-        return customerUserName;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
     public String getChefUsername() {

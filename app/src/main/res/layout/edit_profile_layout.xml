@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:layout_below="@id/toolbar">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/textView7"
@@ -156,7 +154,7 @@
                 android:hint="Address"
                 android:inputType="text"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@+id/button_edit_profile"
+                app:layout_constraintBottom_toTopOf="@+id/saveProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -204,39 +202,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <Button
-                android:id="@+id/button_edit_profile"
-                android:layout_width="160dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="24dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_button"
-                android:fontFamily="@font/montserratsemibold"
-                android:text="edit profile"
-                android:textColor="@color/colorBackgroundInput"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button_add_food"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reg_address" />
-
-            <Button
-                android:id="@+id/button_add_food"
+                android:id="@+id/saveProfile"
                 android:layout_width="160dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="24dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/montserratsemibold"
-                android:text="add food"
+                android:text="SAVE"
                 android:textColor="@color/colorBackgroundInput"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button_edit_profile" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/reg_address" />
 
             <ImageView
                 android:id="@+id/imageView7"
@@ -330,174 +313,4 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <ImageView
-            android:id="@+id/imageView17"
-            android:layout_width="317dp"
-            android:layout_height="388dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.492"
-            app:srcCompat="@drawable/rounded_input" />
-
-        <EditText
-            android:id="@+id/reg_tag1"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 1"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_tag2"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toTopOf="@+id/imageView17"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <EditText
-            android:id="@+id/reg_tag2"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 2"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_tag3"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag1" />
-
-        <EditText
-            android:id="@+id/reg_tag3"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 3"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_tag4"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag2" />
-
-        <EditText
-            android:id="@+id/reg_tag4"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 4"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_tag5"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag3" />
-
-        <EditText
-            android:id="@+id/reg_tag5"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 5"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_tag6"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag4" />
-
-        <EditText
-            android:id="@+id/reg_tag6"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 6"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_tag7"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag5" />
-
-        <EditText
-            android:id="@+id/reg_tag7"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_input_gray"
-            android:hint="Tag 7"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag6" />
-
-        <Button
-            android:id="@+id/add_specific_specialty"
-            android:layout_width="148dp"
-            android:layout_height="35dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/montserratsemibold"
-            android:text="ADD"
-            android:textColor="@color/colorBackgroundInput"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-            app:layout_constraintEnd_toEndOf="@+id/imageView17"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="@+id/imageView17"
-            app:layout_constraintTop_toBottomOf="@+id/reg_tag7"
-            app:layout_constraintVertical_bias="0.496" />
-
-    </android.support.constraint.ConstraintLayout>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

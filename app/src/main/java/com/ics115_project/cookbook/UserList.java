@@ -18,7 +18,7 @@ public class UserList extends ArrayAdapter<User> {
     private List<User> userList;
 
     public UserList(Activity context, List<User> userList){
-        super(context, R.layout.home_page, userList);
+        super(context, R.layout.fragment_home, userList);
         this.context = context;
         this.userList = userList;
     }

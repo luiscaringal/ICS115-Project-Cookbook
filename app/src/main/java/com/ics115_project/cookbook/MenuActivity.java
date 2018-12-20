@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
     private DatabaseReference databaseFood;
-    private String username;
+    private String username, name;
 
     ListView listViewFood;
     List<Food> foodList;
@@ -43,6 +42,7 @@ public class MenuActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         username = bundle.getString("userName");
+        name = bundle.getString("Name");
 
         listViewFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,8 +56,11 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        TextView user = (TextView) findViewById(R.id.ChefName);
-        user.setText(username);
+        TextView chefUserName = (TextView) findViewById(R.id.chefUserName);
+        chefUserName.setText(username);
+
+        TextView chefName = (TextView) findViewById(R.id.chefName);
+        chefName.setText(name);
     }
 
     @Override

@@ -52,8 +52,9 @@
         <activity android:name=".OrderSuccessActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".AddFoodActivity" />
+        <activity android:name=".EditFoodProfileActivity" />
         <activity
-            android:name=".AddFoodProfile"
+            android:name=".AddFoodProfileActivity"
             android:label="@string/title_activity_add_food_profile"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>

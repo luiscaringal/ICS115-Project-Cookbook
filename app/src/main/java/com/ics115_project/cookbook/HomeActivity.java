@@ -28,13 +28,6 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseUser;
-    private DatabaseReference databaseOrderList;
-
-    ListView listViewUser;
-//    ListView listViewUserOrder;
-    List<User> userList;
-//    List<UserOrder> userOrderList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,82 +35,20 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home_page);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseUser = FirebaseDatabase.getInstance().getReference("users");
-        databaseOrderList = FirebaseDatabase.getInstance().getReference("orders");
 
         if (firebaseAuth.getCurrentUser() == null) {
             startActivity(new Intent(this, login_user_activity.class));
         }
 
-        listViewUser = (ListView) findViewById(R.id.listViewUser);
-//        listViewUserOrder = (ListView) findViewById(R.id.listViewUserOrder);
-        userList = new ArrayList<>();
-//        userOrderList = new ArrayList<>();
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listViewUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView textview = (TextView) view.findViewById(R.id.textViewUserName);
-                String text = textview.getText().toString();
-
-                Intent i = new Intent(HomeActivity.this,MenuActivity.class);
-                i.putExtra("userName",text);
-                startActivity(i);
-            }
-        });
+        Fragment inititialFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, inititialFragment).commit();
+        setTitle("Home");
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        databaseUser.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                userList.clear();
-
-                for(DataSnapshot userSnapshot: dataSnapshot.getChildren()){
-                    User user = userSnapshot.getValue(User.class);
-                    if(user.getAccountType().equals("Chef")) {
-                        userList.add(user);
-                    }
-                }
-
-                ArrayAdapter adapter = new UserList(HomeActivity.this, userList);
-                listViewUser.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-//        databaseOrderList.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                userOrderList.clear();
-//
-//                for(DataSnapshot userOrderSnapshot: dataSnapshot.getChildren()){
-//                    UserOrder userOrder = userOrderSnapshot.getValue(UserOrder.class);
-//                    userOrderList.add(userOrder);
-//                }
-//
-//                ArrayAdapter adapter = new UserOrderList(HomeActivity.this, userOrderList);
-//                listViewUserOrder.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -129,12 +60,15 @@ public class HomeActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
                         case R.id.home:
                             selectedFragment = new HomeFragment();
+                            setTitle("Home");
                             break;
                         case R.id.profile:
                             selectedFragment = new ProfileFragment();
+                            setTitle("Profile");
                             break;
                         case R.id.order:
                             selectedFragment = new OrderFragment();
+                            setTitle("Order");
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

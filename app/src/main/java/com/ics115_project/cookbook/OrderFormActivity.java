@@ -30,7 +30,7 @@ public class OrderFormActivity extends AppCompatActivity {
     private String food;
     private String chefUserName;
     String currentUser;
-    String currentUserUserName;
+    String currentUserEmail;
 
     DatabaseReference databaseUser;
     DatabaseReference databaseOrder;
@@ -86,7 +86,7 @@ public class OrderFormActivity extends AppCompatActivity {
                     User user = userSnapshot.getValue(User.class);
                     if(user.getEmail().equals(loggedInUser.getEmail())){
                         currentUser = user.getName();
-                        currentUserUserName = user.getUserName();
+                        currentUserEmail = user.getEmail();
                         break;
                     }
                 }
@@ -113,7 +113,7 @@ public class OrderFormActivity extends AppCompatActivity {
         radioButton = (RadioButton) findViewById(modeOfPaymentId);
         String modeOfPayment = radioButton.getText().toString();
 
-        UserOrder userOrder = new UserOrder(currentUserUserName,customer, food, quantity, dateOfPickUp, modeOfPayment, extraComment, chefUserName);
+        UserOrder userOrder = new UserOrder(currentUserEmail,customer, food, quantity, dateOfPickUp, modeOfPayment, extraComment, chefUserName);
 
         databaseOrder.push().setValue(userOrder);
     }
